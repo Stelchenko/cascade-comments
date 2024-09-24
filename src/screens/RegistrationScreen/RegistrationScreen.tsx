@@ -11,6 +11,7 @@ type RegistrationScreenProps = {
   email: string;
   setEmail: (email: string) => void;
   goToLoginHandler: () => void;
+  registrationHandler: () => void;
 };
 
 export const RegistrationScreen: React.FC<RegistrationScreenProps> = (
@@ -24,6 +25,7 @@ export const RegistrationScreen: React.FC<RegistrationScreenProps> = (
     userName,
     setUserName,
     goToLoginHandler,
+    registrationHandler,
   } = props;
   return (
     <View style={styles.container}>
@@ -40,7 +42,7 @@ export const RegistrationScreen: React.FC<RegistrationScreenProps> = (
         onChange={setPassword}
         secure
       />
-      <AuthButton title={"Continue"} />
+      <AuthButton onPress={registrationHandler} title={"Continue"} />
       <TouchableOpacity onPress={goToLoginHandler}>
         <Text>Go to sign in</Text>
       </TouchableOpacity>

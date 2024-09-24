@@ -9,11 +9,18 @@ type LoginScreenProps = {
   email: string;
   setEmail: (email: string) => void;
   goToRegistrationHandler: () => void;
+  loginHandler: () => void;
 };
 
 export const LoginScreen: React.FC<LoginScreenProps> = (props) => {
-  const { setPassword, password, email, setEmail, goToRegistrationHandler } =
-    props;
+  const {
+    setPassword,
+    password,
+    email,
+    setEmail,
+    goToRegistrationHandler,
+    loginHandler,
+  } = props;
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Sign In</Text>
@@ -24,7 +31,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = (props) => {
         onChange={setPassword}
         secure
       />
-      <AuthButton title={"Continue"} />
+      <AuthButton onPress={loginHandler} title={"Continue"} />
       <TouchableOpacity onPress={goToRegistrationHandler}>
         <Text>Go to sign up</Text>
       </TouchableOpacity>

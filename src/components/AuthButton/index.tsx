@@ -4,12 +4,13 @@ import { styles } from "./styles";
 
 type AuthButtonProps = {
   title: string;
+  onPress: () => void;
 };
 
 export const AuthButton: React.FC<AuthButtonProps> = (props) => {
-  const { title } = props;
+  const { title, onPress } = props;
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text>{title}</Text>
     </TouchableOpacity>
   );

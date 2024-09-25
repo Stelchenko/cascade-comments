@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { HomeScreen } from "@screens/HomeScreen/HomeScreen";
 import { useQuery, useRealm } from "@realm/react";
 import { Comment } from "../../realm/entity/Comment";
@@ -7,12 +7,14 @@ import { useAuth } from "../../auth/useAuth";
 
 export const HomeContainer = () => {
   const [newComment, setNewComment] = useState("");
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const auth = useAuth();
   const realm = useRealm();
   const comments = useQuery(Comment, (collection) =>
     collection.filtered("replyToId == $0", null),
   );
+
+  const countOfPages = Math.ceil(comments.length / 25);
 
   const addNewCommentHandler = useCallback((): void => {
     if (!newComment) {
@@ -28,15 +30,30 @@ export const HomeContainer = () => {
     });
   }, [realm, newComment]);
 
+  const paginatedComments = useMemo(() => {
+    return comments.slice((currentPage - 1) * 25, currentPage * 25);
+  }, [comments, currentPage, countOfPages]);
+
   const logOutHandler = () => {
     auth.signOut();
   };
 
+  const pageUp = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const pageDown = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
   return (
     <HomeScreen
-      page={page}
+      countOfPages={countOfPages}
+      pageDown={pageDown}
+      pageUp={pageUp}
+      currentPage={currentPage}
       addNewCommentHandler={addNewCommentHandler}
-      comments={comments}
+      comments={paginatedComments}
       newComment={newComment}
       setNewComment={setNewComment}
       logOutHandler={logOutHandler}

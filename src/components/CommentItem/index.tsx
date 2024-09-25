@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Alert, Text, TouchableOpacity, View, ViewStyle } from "react-native";
+import { Text, TouchableOpacity, View, ViewStyle } from "react-native";
 import { Comment } from "../../realm/entity/Comment";
 import { useQuery, useRealm } from "@realm/react";
 import { User } from "../../realm/entity/User";
 import Realm from "realm";
 import { useAuth } from "../../auth/useAuth";
 import { styles } from "./styles";
+import prompt from "@powerdesigninc/react-native-prompt";
 
 type CommentItemProps = {
   item: Comment;
@@ -38,14 +39,16 @@ export const CommentItem: React.FC<CommentItemProps> = (props) => {
   );
 
   const replyHandler = () => {
-    Alert.prompt("Please enter a text", "", (text) => {
-      realm.write(() => {
-        return new Comment(realm, {
-          text: text,
-          userId: new Realm.BSON.ObjectId(auth.user?._id),
-          replyToId: new Realm.BSON.ObjectId(item._id),
+    prompt("", "Please enter a texts", (text) => {
+      if (text.trim()) {
+        realm.write(() => {
+          return new Comment(realm, {
+            text: text,
+            userId: new Realm.BSON.ObjectId(auth.user?._id),
+            replyToId: new Realm.BSON.ObjectId(item._id),
+          });
         });
-      });
+      }
     });
   };
 

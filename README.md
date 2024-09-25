@@ -18,7 +18,7 @@ yarn install
 cd ios && pod install && cd ..
 ```
 
-## Step 3: Run app
+## Step 4: Run app
 
 ### For Android
 

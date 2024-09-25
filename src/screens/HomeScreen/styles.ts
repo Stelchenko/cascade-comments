@@ -38,5 +38,9 @@ export const styles = StyleSheet.create({
   },
   page: {
     fontSize: 20,
+    color: "black",
+  },
+  text: {
+    color: "black",
   },
 });

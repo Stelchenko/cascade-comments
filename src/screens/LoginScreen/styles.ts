@@ -11,5 +11,9 @@ export const styles = StyleSheet.create({
   },
   header: {
     fontSize: 30,
+    color: "black",
+  },
+  text: {
+    color: "black",
   },
 });

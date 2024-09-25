@@ -11,7 +11,7 @@ export const AuthButton: React.FC<AuthButtonProps> = (props) => {
   const { title, onPress } = props;
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text>{title}</Text>
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 };

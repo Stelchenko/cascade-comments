@@ -57,7 +57,9 @@ export const CommentItem: React.FC<CommentItemProps> = (props) => {
       <View style={styles.container}>
         <View style={styles.header}>
           <View style={styles.nameContainer}>
-            <Text numberOfLines={1}>{user[0].userName}</Text>
+            <Text style={styles.text} numberOfLines={1}>
+              {user[0].userName}
+            </Text>
             {originalCommentAuthor.length > 0 ? (
               <Text style={styles.toText} numberOfLines={1}>
                 {" "}
@@ -66,10 +68,10 @@ export const CommentItem: React.FC<CommentItemProps> = (props) => {
             ) : null}
           </View>
           <TouchableOpacity onPress={replyHandler}>
-            <Text>Reply</Text>
+            <Text style={styles.text}>Reply</Text>
           </TouchableOpacity>
         </View>
-        <Text>{item.text}</Text>
+        <Text style={styles.text}>{item.text}</Text>
       </View>
 
       {comments.length ? (

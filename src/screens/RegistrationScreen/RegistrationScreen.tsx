@@ -44,7 +44,7 @@ export const RegistrationScreen: React.FC<RegistrationScreenProps> = (
       />
       <AuthButton onPress={registrationHandler} title={"Continue"} />
       <TouchableOpacity onPress={goToLoginHandler}>
-        <Text>Go to sign in</Text>
+        <Text style={styles.text}>Go to sign in</Text>
       </TouchableOpacity>
     </View>
   );

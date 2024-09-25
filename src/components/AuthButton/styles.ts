@@ -9,4 +9,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "rgba(153,137,137, 0.4)",
   },
+  text: {
+    color: "black",
+  },
 });

@@ -32,7 +32,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.logOutContainer} onPress={logOutHandler}>
-        <Text>Log Out</Text>
+        <Text style={styles.text}>Log Out</Text>
       </TouchableOpacity>
 
       <View style={styles.inputContainer}>

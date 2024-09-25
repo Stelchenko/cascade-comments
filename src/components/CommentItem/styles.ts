@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
   },
   toText: {
     flex: 1,
+    color: "black",
   },
   item: {
     width: "95%",
@@ -27,5 +28,8 @@ export const styles = StyleSheet.create({
   },
   expandButton: {
     color: "rgb(8,75,198)",
+  },
+  text: {
+    color: "black",
   },
 });

@@ -33,7 +33,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = (props) => {
       />
       <AuthButton onPress={loginHandler} title={"Continue"} />
       <TouchableOpacity onPress={goToRegistrationHandler}>
-        <Text>Go to sign up</Text>
+        <Text style={styles.text}>Go to sign up</Text>
       </TouchableOpacity>
     </View>
   );

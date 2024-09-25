@@ -9,7 +9,7 @@ import { AuthProvider } from "./src/auth/AuthContext";
 function App(): React.JSX.Element {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <RealmProvider schema={schemas}>
+      <RealmProvider deleteRealmIfMigrationNeeded schema={schemas}>
         <AuthProvider>
           <NavigationContainer>
             <AuthGuard />

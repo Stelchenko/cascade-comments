@@ -46,6 +46,7 @@ export const RegistrationContainer = () => {
     realm.write(() => {
       const user = new User(realm, { email, userName, password });
       auth.signIn(user);
+      return user;
     });
   }, [realm, email, userName, password]);
 

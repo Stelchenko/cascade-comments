@@ -39,7 +39,7 @@ export const CommentItem: React.FC<CommentItemProps> = (props) => {
   );
 
   const replyHandler = () => {
-    prompt("", "Please enter a texts", (text) => {
+    prompt("", "Please enter a text", (text) => {
       if (text.trim()) {
         realm.write(() => {
           return new Comment(realm, {
